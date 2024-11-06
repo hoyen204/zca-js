@@ -35,6 +35,7 @@ import { unblockUserFactory } from "./apis/unblockUser.js";
 import { undoFactory } from "./apis/undo.js";
 import { uploadAttachmentFactory } from "./apis/uploadAttachment.js";
 import { checkUpdate } from "./update.js";
+import { forwardFactory } from "./apis/forwardMessage.js";
 
 export type J2Cookies = {
     url: string;
@@ -151,6 +152,7 @@ export class API {
     public unblockUser: ReturnType<typeof unblockUserFactory>;
     public undo: ReturnType<typeof undoFactory>;
     public uploadAttachment: ReturnType<typeof uploadAttachmentFactory>;
+    public forwardMessage: ReturnType<typeof forwardFactory>;
 
     constructor(zpwServiceMap: Record<string, string[]>, wsUrl: string) {
         this.zpwServiceMap = zpwServiceMap;
@@ -187,5 +189,6 @@ export class API {
         this.unblockUser = unblockUserFactory(this);
         this.undo = undoFactory(this);
         this.uploadAttachment = uploadAttachmentFactory(this);
+        this.forwardMessage = forwardFactory(this);
     }
 }
